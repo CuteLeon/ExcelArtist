@@ -73,7 +73,8 @@ namespace ExcelArtist
             if (OriginalImage == null) throw new Exception("加载图片文件失败：" + ImagePath);
 
             //缩小图像，太大了处理费时
-            OriginalImage = new Bitmap(OriginalImage, new Size(100 * OriginalImage.Width / OriginalImage.Height, 100));
+            if(OriginalImage.Height>100)
+                OriginalImage = new Bitmap(OriginalImage, new Size(100 * OriginalImage.Width / OriginalImage.Height, 100));
             
             //创建表格
             CreateExcel(Path.GetFileNameWithoutExtension(ImagePath));
@@ -87,12 +88,12 @@ namespace ExcelArtist
             if (ArtistWorker.CancellationPending) { e.Cancel = true; return; }
             //设置行高
             for (int Line = 1; Line <= OriginalImage.Height; Line++)
-                worksheet.Rows[Line].RowHeight = 10;
+                worksheet.Rows[Line].RowHeight = 4.2;
 
             if (ArtistWorker.CancellationPending) { e.Cancel = true; return; }
             //设置列宽
             for (int Column = 1; Column <= OriginalImage.Width; Column++)
-                worksheet.Columns[Column].ColumnWidth = 1;
+                worksheet.Columns[Column].ColumnWidth = 0.4;
 
             if (ArtistWorker.CancellationPending) { e.Cancel = true; return; }
             for (int Line = 0; Line < OriginalImage.Height; Line++)

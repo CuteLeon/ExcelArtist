@@ -9,6 +9,7 @@ using Microsoft.Office;
 using Microsoft.Office.Interop;
 using Microsoft.Office.Interop.Excel;
 using System.IO;
+using System.Drawing;
 
 namespace ExcelArtist
 {
@@ -44,8 +45,11 @@ namespace ExcelArtist
             worksheet.Name = ImageName + "_Leon";
         }
 
-        private void CloseAndSaveExcel(string ExcelPath)
+        private void SaveAndCloseExcel(string ExcelPath)
         {
+            application.DisplayAlerts = false;
+            application.EnableLargeOperationAlert = false;
+            application.AlertBeforeOverwriting = false;
             workbook.SaveAs(ExcelPath, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
             workbook.Close();
             application.Quit();
@@ -58,29 +62,38 @@ namespace ExcelArtist
 
         private void ArtistWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            string ImagePath = (e.Argument as VaryObject).InPath;
             string ExcelPath = (e.Argument as VaryObject).OutPath;
-            CreateExcel(Path.GetFileNameWithoutExtension(ExcelPath));
-            CloseAndSaveExcel(ExcelPath);
-            return;
-            int i = 0;
-            while (i < 100)
+            int LastProgressPersent = -1, ProgressPercent = 0;
+
+            //加载图像
+            Bitmap OriginalImage;
+            using (FileStream ImageStream = new FileStream(ImagePath, FileMode.Open))
+                OriginalImage = Bitmap.FromStream(ImageStream) as Bitmap;
+            if (OriginalImage == null) throw new Exception("加载图片文件失败：" + ImagePath);
+
+            //创建表格
+            CreateExcel(Path.GetFileNameWithoutExtension(ImagePath));
+            
+            //核心：遍历图像像素并转存到Excel
+            for (int Y = 0; Y < OriginalImage.Height; Y++)
             {
-                if (ArtistWorker.CancellationPending)
+                for (int X = 0; X < OriginalImage.Width; X++)
                 {
-                    e.Cancel = true;
-                    //e.Result = null;
-                    return;
+                    //System.Diagnostics.Debug.Print(OriginalImage.GetPixel(X, Y).ToString());
                 }
-                else
+
+                ProgressPercent = 100 * Y / OriginalImage.Height;
+                if (LastProgressPersent != ProgressPercent)
                 {
-                    i += 10;
-                    if (i == 60)
-                        throw new Exception("2783462347");
-                    ArtistWorker.ReportProgress(i);
-                    System.Diagnostics.Debug.Print("报告进度：{0}", i);
-                    System.Threading.Thread.Sleep(500);
+                    LastProgressPersent = ProgressPercent;
+                    System.Diagnostics.Debug.Print("报告进度：" + ProgressPercent);
+                    ArtistWorker.ReportProgress(LastProgressPersent);
                 }
             }
+
+            //保存并关闭表格文件
+            SaveAndCloseExcel(ExcelPath);
         }
 
     }

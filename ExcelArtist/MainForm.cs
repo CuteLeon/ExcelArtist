@@ -151,7 +151,7 @@ namespace ExcelArtist
         {
             System.Diagnostics.Debug.Print("接受进度：{0}", e.ProgressPercentage);
             TaskProgressBar.Value = e.ProgressPercentage;
-            TaskProgressBar.Refresh();
+            TaskProgressBar.Invalidate();
         }
 
         private void ExcelArtist_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

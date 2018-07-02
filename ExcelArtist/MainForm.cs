@@ -96,10 +96,10 @@ namespace ExcelArtist
                 AddExtension = true,
                 AutoUpgradeEnabled = true,
                 CheckPathExists = true,
-                Filter = "Excel 表格文件|*.xls",
+                Filter = "Excel 表格文件|*.xlsx",
                 FileName = string.IsNullOrEmpty(ImageTextBox.Text) ? string.Empty : 
                     Path.GetFileNameWithoutExtension(ImageTextBox.Text) + "_ExcelArtist",
-                DefaultExt = ".xls",
+                DefaultExt = ".xlsx",
                 OverwritePrompt = true
 
             })

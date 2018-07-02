@@ -30,16 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             VisualPlus.Structure.TextStyle textStyle2 = new VisualPlus.Structure.TextStyle();
-            VisualPlus.Structure.TextStyle textStyle4 = new VisualPlus.Structure.TextStyle();
-            VisualPlus.Structure.TextStyle textStyle5 = new VisualPlus.Structure.TextStyle();
             VisualPlus.Structure.TextStyle textStyle1 = new VisualPlus.Structure.TextStyle();
+            VisualPlus.Structure.TextStyle textStyle4 = new VisualPlus.Structure.TextStyle();
             VisualPlus.Structure.TextStyle textStyle3 = new VisualPlus.Structure.TextStyle();
+            VisualPlus.Structure.TextStyle textStyle5 = new VisualPlus.Structure.TextStyle();
             VisualPlus.Structure.TextStyle textStyle6 = new VisualPlus.Structure.TextStyle();
             this.visualGroupBox1 = new VisualPlus.Toolkit.Controls.Layout.VisualGroupBox();
-            this.visualGroupBox2 = new VisualPlus.Toolkit.Controls.Layout.VisualGroupBox();
-            this.TaskButton = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.ImageTextBox = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.visualGroupBox2 = new VisualPlus.Toolkit.Controls.Layout.VisualGroupBox();
             this.DocumentTextBox = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.TaskButton = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.TaskProgressBar = new VisualPlus.Toolkit.Controls.DataVisualization.VisualProgressBar();
             this.visualGroupBox1.SuspendLayout();
             this.visualGroupBox2.SuspendLayout();
@@ -80,74 +80,6 @@
             textStyle2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.visualGroupBox1.TextStyle = textStyle2;
             this.visualGroupBox1.TitleBoxHeight = 24;
-            // 
-            // visualGroupBox2
-            // 
-            this.visualGroupBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.visualGroupBox2.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualGroupBox2.BackColorState.Enabled = System.Drawing.Color.WhiteSmoke;
-            this.visualGroupBox2.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.visualGroupBox2.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.visualGroupBox2.Border.HoverVisible = true;
-            this.visualGroupBox2.Border.Rounding = 6;
-            this.visualGroupBox2.Border.Thickness = 1;
-            this.visualGroupBox2.Border.Type = VisualPlus.Enumerators.ShapeType.Rounded;
-            this.visualGroupBox2.Border.Visible = true;
-            this.visualGroupBox2.BoxStyle = VisualPlus.Toolkit.Controls.Layout.VisualGroupBox.GroupBoxStyle.Default;
-            this.visualGroupBox2.Controls.Add(this.DocumentTextBox);
-            this.visualGroupBox2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.visualGroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualGroupBox2.Image = null;
-            this.visualGroupBox2.Location = new System.Drawing.Point(40, 125);
-            this.visualGroupBox2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualGroupBox2.Name = "visualGroupBox2";
-            this.visualGroupBox2.Padding = new System.Windows.Forms.Padding(5, 26, 5, 5);
-            this.visualGroupBox2.Separator = true;
-            this.visualGroupBox2.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualGroupBox2.Size = new System.Drawing.Size(360, 70);
-            this.visualGroupBox2.TabIndex = 1;
-            this.visualGroupBox2.Text = "   选择表格文件存储路径：";
-            this.visualGroupBox2.TextAlignment = System.Drawing.StringAlignment.Near;
-            this.visualGroupBox2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.visualGroupBox2.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            textStyle4.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            textStyle4.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            textStyle4.Hover = System.Drawing.Color.Empty;
-            textStyle4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.visualGroupBox2.TextStyle = textStyle4;
-            this.visualGroupBox2.TitleBoxHeight = 24;
-            // 
-            // TaskButton
-            // 
-            this.TaskButton.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TaskButton.BackColorState.Enabled = System.Drawing.Color.White;
-            this.TaskButton.BackColorState.Hover = System.Drawing.Color.WhiteSmoke;
-            this.TaskButton.BackColorState.Pressed = System.Drawing.Color.Gainsboro;
-            this.TaskButton.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.TaskButton.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.TaskButton.Border.HoverVisible = true;
-            this.TaskButton.Border.Rounding = 6;
-            this.TaskButton.Border.Thickness = 1;
-            this.TaskButton.Border.Type = VisualPlus.Enumerators.ShapeType.Rounded;
-            this.TaskButton.Border.Visible = true;
-            this.TaskButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TaskButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.TaskButton.Image = null;
-            this.TaskButton.Location = new System.Drawing.Point(150, 234);
-            this.TaskButton.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.TaskButton.Name = "TaskButton";
-            this.TaskButton.Size = new System.Drawing.Size(140, 45);
-            this.TaskButton.TabIndex = 2;
-            this.TaskButton.Text = "生成";
-            this.TaskButton.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.TaskButton.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
-            this.TaskButton.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            textStyle5.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            textStyle5.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            textStyle5.Hover = System.Drawing.Color.Empty;
-            textStyle5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.TaskButton.TextStyle = textStyle5;
-            this.TaskButton.Click += new System.EventHandler(this.TaskButton_Click);
             // 
             // ImageTextBox
             // 
@@ -202,6 +134,42 @@
             this.ImageTextBox.Watermark.Visible = true;
             this.ImageTextBox.ButtonClicked += new VisualPlus.Toolkit.Controls.Editors.VisualTextBox.ButtonClickedEventHandler(this.ImageTextBox_ButtonClicked);
             // 
+            // visualGroupBox2
+            // 
+            this.visualGroupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.visualGroupBox2.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.visualGroupBox2.BackColorState.Enabled = System.Drawing.Color.WhiteSmoke;
+            this.visualGroupBox2.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.visualGroupBox2.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.visualGroupBox2.Border.HoverVisible = true;
+            this.visualGroupBox2.Border.Rounding = 6;
+            this.visualGroupBox2.Border.Thickness = 1;
+            this.visualGroupBox2.Border.Type = VisualPlus.Enumerators.ShapeType.Rounded;
+            this.visualGroupBox2.Border.Visible = true;
+            this.visualGroupBox2.BoxStyle = VisualPlus.Toolkit.Controls.Layout.VisualGroupBox.GroupBoxStyle.Default;
+            this.visualGroupBox2.Controls.Add(this.DocumentTextBox);
+            this.visualGroupBox2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.visualGroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualGroupBox2.Image = null;
+            this.visualGroupBox2.Location = new System.Drawing.Point(40, 125);
+            this.visualGroupBox2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualGroupBox2.Name = "visualGroupBox2";
+            this.visualGroupBox2.Padding = new System.Windows.Forms.Padding(5, 26, 5, 5);
+            this.visualGroupBox2.Separator = true;
+            this.visualGroupBox2.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.visualGroupBox2.Size = new System.Drawing.Size(360, 70);
+            this.visualGroupBox2.TabIndex = 1;
+            this.visualGroupBox2.Text = "   选择表格文件存储路径：";
+            this.visualGroupBox2.TextAlignment = System.Drawing.StringAlignment.Near;
+            this.visualGroupBox2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.visualGroupBox2.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            textStyle4.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            textStyle4.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            textStyle4.Hover = System.Drawing.Color.Empty;
+            textStyle4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.visualGroupBox2.TextStyle = textStyle4;
+            this.visualGroupBox2.TitleBoxHeight = 24;
+            // 
             // DocumentTextBox
             // 
             this.DocumentTextBox.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -254,6 +222,38 @@
             this.DocumentTextBox.Watermark.Text = "请选择表格文件存储路径...";
             this.DocumentTextBox.Watermark.Visible = true;
             this.DocumentTextBox.ButtonClicked += new VisualPlus.Toolkit.Controls.Editors.VisualTextBox.ButtonClickedEventHandler(this.DocumentTextBox_ButtonClicked);
+            // 
+            // TaskButton
+            // 
+            this.TaskButton.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TaskButton.BackColorState.Enabled = System.Drawing.Color.White;
+            this.TaskButton.BackColorState.Hover = System.Drawing.Color.WhiteSmoke;
+            this.TaskButton.BackColorState.Pressed = System.Drawing.Color.Gainsboro;
+            this.TaskButton.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.TaskButton.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.TaskButton.Border.HoverVisible = true;
+            this.TaskButton.Border.Rounding = 6;
+            this.TaskButton.Border.Thickness = 1;
+            this.TaskButton.Border.Type = VisualPlus.Enumerators.ShapeType.Rounded;
+            this.TaskButton.Border.Visible = true;
+            this.TaskButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TaskButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TaskButton.Image = null;
+            this.TaskButton.Location = new System.Drawing.Point(150, 234);
+            this.TaskButton.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.TaskButton.Name = "TaskButton";
+            this.TaskButton.Size = new System.Drawing.Size(140, 45);
+            this.TaskButton.TabIndex = 2;
+            this.TaskButton.Text = "生成";
+            this.TaskButton.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.TaskButton.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.TaskButton.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            textStyle5.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            textStyle5.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            textStyle5.Hover = System.Drawing.Color.Empty;
+            textStyle5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.TaskButton.TextStyle = textStyle5;
+            this.TaskButton.Click += new System.EventHandler(this.TaskButton_Click);
             // 
             // TaskProgressBar
             // 

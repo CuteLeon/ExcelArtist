@@ -149,7 +149,7 @@ namespace ExcelArtist
 
         private void ArtistWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            System.Diagnostics.Debug.Print("接受进度：{0}", e.ProgressPercentage);
+            //System.Diagnostics.Debug.Print("接受进度：{0}", e.ProgressPercentage);
             TaskProgressBar.Value = e.ProgressPercentage;
             TaskProgressBar.Invalidate();
         }

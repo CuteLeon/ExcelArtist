@@ -8,6 +8,7 @@ using System.Text;
 using Microsoft.Office;
 using Microsoft.Office.Interop;
 using Microsoft.Office.Interop.Excel;
+using System.IO;
 
 namespace ExcelArtist
 {
@@ -28,11 +29,19 @@ namespace ExcelArtist
             ArtistWorker.DoWork += new DoWorkEventHandler(ArtistWorker_DoWork);
         }
 
-        private void CreateExcel()
+        private void CreateExcel(string ImageName)
         {
             application = new Application();
+            
             workbook = application.Workbooks.Add(true);
+            //TODO: 在这里给文档增加打开密码
+            //workbook.Password = "testpass";
+            workbook.Title = ImageName + " - Leon";
+            workbook.Author = "Leon-ExcelArtist";
+            workbook.Comments = "此表格由 ExcelArtist 生成，访问：https://github.com/CuteLeon/ExcelArtist";
+
             worksheet = workbook.ActiveSheet;
+            worksheet.Name = ImageName + "_Leon";
         }
 
         private void CloseAndSaveExcel(string ExcelPath)
@@ -49,8 +58,9 @@ namespace ExcelArtist
 
         private void ArtistWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            CreateExcel();
-            CloseAndSaveExcel((e.Argument as VaryObject).OutPath);
+            string ExcelPath = (e.Argument as VaryObject).OutPath;
+            CreateExcel(Path.GetFileNameWithoutExtension(ExcelPath));
+            CloseAndSaveExcel(ExcelPath);
             return;
             int i = 0;
             while (i < 100)

@@ -51,6 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Artist.cs" />
+    <Compile Include="Image2ExcelArtist.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

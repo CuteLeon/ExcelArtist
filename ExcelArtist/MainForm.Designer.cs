@@ -34,11 +34,13 @@
             VisualPlus.Structure.TextStyle textStyle5 = new VisualPlus.Structure.TextStyle();
             VisualPlus.Structure.TextStyle textStyle1 = new VisualPlus.Structure.TextStyle();
             VisualPlus.Structure.TextStyle textStyle3 = new VisualPlus.Structure.TextStyle();
+            VisualPlus.Structure.TextStyle textStyle6 = new VisualPlus.Structure.TextStyle();
             this.visualGroupBox1 = new VisualPlus.Toolkit.Controls.Layout.VisualGroupBox();
             this.visualGroupBox2 = new VisualPlus.Toolkit.Controls.Layout.VisualGroupBox();
             this.TaskButton = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.ImageTextBox = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.DocumentTextBox = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.TaskProgressBar = new VisualPlus.Toolkit.Controls.DataVisualization.VisualProgressBar();
             this.visualGroupBox1.SuspendLayout();
             this.visualGroupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -131,7 +133,7 @@
             this.TaskButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TaskButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.TaskButton.Image = null;
-            this.TaskButton.Location = new System.Drawing.Point(150, 209);
+            this.TaskButton.Location = new System.Drawing.Point(150, 234);
             this.TaskButton.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.TaskButton.Name = "TaskButton";
             this.TaskButton.Size = new System.Drawing.Size(140, 45);
@@ -253,12 +255,55 @@
             this.DocumentTextBox.Watermark.Visible = true;
             this.DocumentTextBox.ButtonClicked += new VisualPlus.Toolkit.Controls.Editors.VisualTextBox.ButtonClickedEventHandler(this.DocumentTextBox_ButtonClicked);
             // 
+            // TaskProgressBar
+            // 
+            this.TaskProgressBar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TaskProgressBar.BackColorState.Enabled = System.Drawing.Color.White;
+            this.TaskProgressBar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.TaskProgressBar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.TaskProgressBar.Border.HoverVisible = true;
+            this.TaskProgressBar.Border.Rounding = 6;
+            this.TaskProgressBar.Border.Thickness = 1;
+            this.TaskProgressBar.Border.Type = VisualPlus.Enumerators.ShapeType.Rounded;
+            this.TaskProgressBar.Border.Visible = true;
+            this.TaskProgressBar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.TaskProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TaskProgressBar.Hatch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TaskProgressBar.Hatch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TaskProgressBar.Hatch.Size = new System.Drawing.Size(2, 2);
+            this.TaskProgressBar.Hatch.Style = System.Drawing.Drawing2D.HatchStyle.Percent90;
+            this.TaskProgressBar.Hatch.Visible = true;
+            this.TaskProgressBar.LargeChange = 5;
+            this.TaskProgressBar.Location = new System.Drawing.Point(40, 206);
+            this.TaskProgressBar.MarqueeWidth = 20;
+            this.TaskProgressBar.Maximum = 100;
+            this.TaskProgressBar.Minimum = 0;
+            this.TaskProgressBar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.TaskProgressBar.Name = "TaskProgressBar";
+            this.TaskProgressBar.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.TaskProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.TaskProgressBar.ProgressImage = null;
+            this.TaskProgressBar.Size = new System.Drawing.Size(360, 20);
+            this.TaskProgressBar.SmallChange = 1;
+            this.TaskProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Blocks;
+            this.TaskProgressBar.TabIndex = 3;
+            this.TaskProgressBar.Text = "Vary-ing";
+            textStyle6.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            textStyle6.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            textStyle6.Hover = System.Drawing.Color.Empty;
+            textStyle6.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.TaskProgressBar.TextStyle = textStyle6;
+            this.TaskProgressBar.Value = 0;
+            this.TaskProgressBar.ValueAlignment = System.Drawing.StringAlignment.Center;
+            this.TaskProgressBar.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CanResize = false;
-            this.ClientSize = new System.Drawing.Size(440, 272);
+            this.ClientSize = new System.Drawing.Size(440, 293);
+            this.Controls.Add(this.TaskProgressBar);
             this.Controls.Add(this.TaskButton);
             this.Controls.Add(this.visualGroupBox2);
             this.Controls.Add(this.visualGroupBox1);
@@ -285,6 +330,7 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton TaskButton;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox ImageTextBox;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox DocumentTextBox;
+        private VisualPlus.Toolkit.Controls.DataVisualization.VisualProgressBar TaskProgressBar;
     }
 }
 

@@ -118,9 +118,9 @@
             // TaskButton
             // 
             this.TaskButton.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TaskButton.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(69)))), ((int)(((byte)(0)))));
-            this.TaskButton.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(69)))), ((int)(((byte)(0)))));
-            this.TaskButton.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(255)))), ((int)(((byte)(69)))), ((int)(((byte)(0)))));
+            this.TaskButton.BackColorState.Enabled = System.Drawing.Color.White;
+            this.TaskButton.BackColorState.Hover = System.Drawing.Color.WhiteSmoke;
+            this.TaskButton.BackColorState.Pressed = System.Drawing.Color.Gainsboro;
             this.TaskButton.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.TaskButton.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
             this.TaskButton.Border.HoverVisible = true;

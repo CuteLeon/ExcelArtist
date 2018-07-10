@@ -43,8 +43,8 @@ namespace ExcelArtist
             if (OriginalImage == null) throw new Exception("加载图片文件失败：" + ImagePath);
 
             //缩小图像，太大了处理费时
-            if(OriginalImage.Height>100)
-                OriginalImage = new Bitmap(OriginalImage, new Size(100 * OriginalImage.Width / OriginalImage.Height, 100));
+            if(OriginalImage.Height>200)
+                OriginalImage = new Bitmap(OriginalImage, new Size(200 * OriginalImage.Width / OriginalImage.Height, 200));
 
             using (ExcelPackage excel = new ExcelPackage(new FileInfo(ExcelPath)))
             {
@@ -61,9 +61,11 @@ namespace ExcelArtist
                 properties.Title = WorkName + " - Leon";
                 if (ArtistWorker.CancellationPending) { e.Cancel = true; return; }
 
-                //添加表
-                excel.Workbook.Worksheets.Add(WorkName + "_Leon");
-                ExcelWorksheet sheet = excel.Workbook.Worksheets.First();
+                //初始化表
+                if (excel.Workbook.Worksheets.FirstOrDefault(s => s.Name == WorkName) != null)
+                    excel.Workbook.Worksheets.Delete(WorkName);
+                excel.Workbook.Worksheets.Add(WorkName);
+                ExcelWorksheet sheet = excel.Workbook.Worksheets[WorkName];
                 if (sheet == null) throw new Exception("创建 Sheet 失败");
 
                 /* 注意：
@@ -73,43 +75,44 @@ namespace ExcelArtist
                  */
 
                 //设置默认列宽和行高
-                sheet.DefaultColWidth = 0.4;
-                sheet.DefaultRowHeight = 4.2;
+                //sheet.DefaultColWidth = 0.7;
+                //sheet.DefaultRowHeight = 4.2;
                 if (ArtistWorker.CancellationPending) { e.Cancel = true; return; }
 
                 //开始核心任务
-                using (ExcelRange range = sheet.Cells[1, 1, OriginalImage.Width, OriginalImage.Height])
+                using (ExcelRange range = sheet.Cells[1, 1, OriginalImage.Height, OriginalImage.Width])
                 {
-                    //range[1, i].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                    //range[1, i].Style.Fill.BackgroundColor.SetColor(Color.Red);
-                    
+                    //设置列宽和行高
+                    for (int Column = 0; Column < OriginalImage.Width; Column++)
+                        sheet.Column(Column + 1).Width = 0.35; ;
+                    for (int Line = 0; Line < OriginalImage.Height; Line++)
+                        sheet.Row(Line + 1).Height = 2.1;
+                    if (ArtistWorker.CancellationPending) { e.Cancel = true; return; }
+
+                    for (int Line = 0; Line < OriginalImage.Height; Line++)
+                    {
+                        for (int Column = 0; Column < OriginalImage.Width; Column++)
+                        {
+                            //System.Diagnostics.Debug.Print("第 {0} 行, 第 {1} 列", Line, Column);
+                            range[Line + 1, Column + 1].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                            range[Line + 1, Column + 1].Style.Fill.BackgroundColor.SetColor(OriginalImage.GetPixel(Column, Line));
+                            if (ArtistWorker.CancellationPending) { e.Cancel = true; return; }
+                        }
+
+                        ProgressPercent = 100 * Line / OriginalImage.Height;
+                        if (LastProgressPersent != ProgressPercent)
+                        {
+                            LastProgressPersent = ProgressPercent;
+                            //System.Diagnostics.Debug.Print("报告进度：" + ProgressPercent);
+                            ArtistWorker.ReportProgress(LastProgressPersent);
+                        }
+                    }
                 }
+                if (ArtistWorker.CancellationPending) { e.Cancel = true; return; }
 
                 //保存文档
                 excel.Save();
             }
-
-            //for (int Line = 0; Line < OriginalImage.Height; Line++)
-            //{
-            //    for (int Column = 0; Column < OriginalImage.Width; Column++)
-            //    {
-            //        //System.Diagnostics.Debug.Print("第 {0} 行, 第 {1} 列", Line, Column);
-            //        range.Cells[Line + 1, Column + 1].Interior.Color = OriginalImage.GetPixel(Column, Line);
-            //        if (ArtistWorker.CancellationPending) { e.Cancel = true; CloseExcel(); return; }
-            //    }
-
-            //    ProgressPercent = 100 * Line / OriginalImage.Height;
-            //    if (LastProgressPersent != ProgressPercent)
-            //    {
-            //        LastProgressPersent = ProgressPercent;
-            //        //System.Diagnostics.Debug.Print("报告进度：" + ProgressPercent);
-            //        ArtistWorker.ReportProgress(LastProgressPersent);
-            //    }
-            //}
-
-            ////if (ArtistWorker.CancellationPending) { e.Cancel = true; return; }
-            ////保存并关闭表格文件
-            //SaveAndCloseExcel(ExcelPath);
         }
 
     }

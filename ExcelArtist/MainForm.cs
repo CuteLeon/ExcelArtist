@@ -176,6 +176,11 @@ namespace ExcelArtist
             {
                 System.Diagnostics.Debug.Print("任务结束遇到异常：{0}", ex.Message);
             }
+            finally
+            {
+                ExcelArtist = null;
+                GC.Collect();
+            }
         }
 
         private void ImageTextBox_TextChanged(object sender, EventArgs e)

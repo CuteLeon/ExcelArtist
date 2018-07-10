@@ -130,7 +130,8 @@ namespace ExcelArtist
                     return;
                 }
 
-                ExcelArtist = new Image2ExcelArtist();
+                //ExcelArtist = new Image2ExcelArtist();
+                ExcelArtist = new EPPlusImage2ExcelArtist();
                 ExcelArtist.ArtistWorker.ProgressChanged += new ProgressChangedEventHandler(ArtistWorker_ProgressChanged);
                 ExcelArtist.ArtistWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(ExcelArtist_RunWorkerCompleted);
 

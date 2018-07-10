@@ -18,6 +18,7 @@ namespace ExcelArtist
         Application application;
         Workbook workbook;
         Worksheet worksheet;
+        Range range;
 
         public override BackgroundWorker ArtistWorker { get; } = new BackgroundWorker()
         {
@@ -33,9 +34,13 @@ namespace ExcelArtist
         private void CreateExcel(string ImageName)
         {
             application = new Application();
+            if (application == null) throw new Exception("无法启动 Excel.");
+
             application.DisplayAlerts = false;
             application.EnableLargeOperationAlert = false;
             application.AlertBeforeOverwriting = false;
+            //会显示Excel窗口并显示逐行打印的效果
+            application.Visible = true;
             
             workbook = application.Workbooks.Add(true);
             //TODO: 在这里给文档增加打开密码
@@ -46,13 +51,28 @@ namespace ExcelArtist
 
             worksheet = workbook.ActiveSheet;
             worksheet.Name = ImageName + "_Leon";
+
+            range = worksheet.Range["A1","A1"];
         }
 
         private void SaveAndCloseExcel(string ExcelPath)
         {
+            range.EntireColumn.AutoFit();
             workbook.SaveAs(ExcelPath, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            CloseExcel();
+        }
+
+        private void CloseExcel()
+        {
             workbook.Close();
             application.Quit();
+
+            range = null;
+            workbook = null;
+            worksheet = null;
+            application = null;
+            
+            GC.Collect();
         }
 
         public override void Vary(string inPath, string outPath)
@@ -84,25 +104,26 @@ namespace ExcelArtist
              * Excel行高和列宽单位不统一，需要特殊设置
              * ( 基础设置：RowHeight=1 & ColumnWidth=0.1 )
              */
+            range = range.Resize[OriginalImage.Width, OriginalImage.Height];
 
-            if (ArtistWorker.CancellationPending) { e.Cancel = true; return; }
+            if (ArtistWorker.CancellationPending) { e.Cancel = true; CloseExcel(); return; }
             //设置行高
             for (int Line = 1; Line <= OriginalImage.Height; Line++)
-                worksheet.Rows[Line].RowHeight = 4.2;
+                range.Rows[Line].RowHeight = 4.2;
 
-            if (ArtistWorker.CancellationPending) { e.Cancel = true; return; }
+            if (ArtistWorker.CancellationPending) { e.Cancel = true; CloseExcel(); return; }
             //设置列宽
             for (int Column = 1; Column <= OriginalImage.Width; Column++)
-                worksheet.Columns[Column].ColumnWidth = 0.4;
+                range.Columns[Column].ColumnWidth = 0.4;
 
-            if (ArtistWorker.CancellationPending) { e.Cancel = true; return; }
+            if (ArtistWorker.CancellationPending) { e.Cancel = true; CloseExcel(); return; }
             for (int Line = 0; Line < OriginalImage.Height; Line++)
             {
                 for (int Column = 0; Column < OriginalImage.Width; Column++)
                 {
                     //System.Diagnostics.Debug.Print("第 {0} 行, 第 {1} 列", Line, Column);
-                    worksheet.Cells[Line + 1, Column + 1].Interior.Color = OriginalImage.GetPixel(Column, Line);
-                    if (ArtistWorker.CancellationPending) { e.Cancel = true; return; }
+                    range.Cells[Line + 1, Column + 1].Interior.Color = OriginalImage.GetPixel(Column, Line);
+                    if (ArtistWorker.CancellationPending) { e.Cancel = true; CloseExcel(); return; }
                 }
 
                 ProgressPercent = 100 * Line / OriginalImage.Height;

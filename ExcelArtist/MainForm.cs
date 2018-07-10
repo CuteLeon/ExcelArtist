@@ -177,5 +177,13 @@ namespace ExcelArtist
             }
         }
 
+        private void ImageTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(ImageTextBox.Text)) return;
+            DocumentTextBox.Text = string.Format(
+                "{0}\\{1}_ExcelArtist.xlsx",
+                Path.GetDirectoryName(ImageTextBox.Text),
+                Path.GetFileNameWithoutExtension(ImageTextBox.Text));
+        }
     }
 }

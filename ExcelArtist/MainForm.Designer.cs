@@ -133,6 +133,7 @@
             this.ImageTextBox.Watermark.Text = "请选择图像路径...";
             this.ImageTextBox.Watermark.Visible = true;
             this.ImageTextBox.ButtonClicked += new VisualPlus.Toolkit.Controls.Editors.VisualTextBox.ButtonClickedEventHandler(this.ImageTextBox_ButtonClicked);
+            this.ImageTextBox.TextChanged += new System.EventHandler(this.ImageTextBox_TextChanged);
             // 
             // visualGroupBox2
             // 

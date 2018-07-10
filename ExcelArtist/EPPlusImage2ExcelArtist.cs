@@ -61,11 +61,12 @@ namespace ExcelArtist
                 properties.Title = WorkName + " - Leon";
                 if (ArtistWorker.CancellationPending) { e.Cancel = true; return; }
 
+                string ImageHash = OriginalImage.GetHashCode().ToString("X");
                 //初始化表
-                if (excel.Workbook.Worksheets.FirstOrDefault(s => s.Name == WorkName) != null)
-                    excel.Workbook.Worksheets.Delete(WorkName);
-                excel.Workbook.Worksheets.Add(WorkName);
-                ExcelWorksheet sheet = excel.Workbook.Worksheets[WorkName];
+                if (excel.Workbook.Worksheets.FirstOrDefault(s => s.Name == ImageHash) != null)
+                    excel.Workbook.Worksheets.Delete(ImageHash);
+                excel.Workbook.Worksheets.Add(ImageHash);
+                ExcelWorksheet sheet = excel.Workbook.Worksheets[ImageHash];
                 if (sheet == null) throw new Exception("创建 Sheet 失败");
 
                 /* 注意：
